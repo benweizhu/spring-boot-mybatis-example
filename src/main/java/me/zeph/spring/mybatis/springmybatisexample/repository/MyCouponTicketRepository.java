@@ -10,13 +10,13 @@ import org.apache.ibatis.annotations.SelectProvider;
 @Mapper
 public interface MyCouponTicketRepository {
 
-  @SelectProvider(type = MyCouponTicketProvider.class, method = "findByCode")
+  @SelectProvider(type = MyCouponTicketSqlProvider.class, method = "findByCode")
   MyCouponTicket findByCode(@Param("code") String code);
 
   @Select("SELECT * FROM MY_COUPON_TICKET WHERE ID = #{id}")
   MyCouponTicket findById(@Param("id") long id);
 
-  @InsertProvider(type = MyCouponTicketProvider.class, method = "insert")
+  @InsertProvider(type = MyCouponTicketSqlProvider.class, method = "insert")
   long save(MyCouponTicket myCouponTicket);
 
 }

@@ -5,7 +5,7 @@ import org.apache.ibatis.jdbc.SQL;
 import static java.lang.String.format;
 import static me.zeph.spring.mybatis.springmybatisexample.security.CurrentAuditorService.getCurrentAuditor;
 
-public class MyCouponTicketProvider {
+public class MyCouponTicketSqlProvider {
 
   public String findByCode() {
     return new SQL()
