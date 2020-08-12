@@ -11,4 +11,13 @@ public class MyCouponTicketProvider {
         .WHERE("CODE = #{code}")
         .toString();
   }
+
+  public String insert() {
+    return new SQL()
+        .INSERT_INTO("MY_COUPON_TICKET")
+        .VALUES("CODE", "#{code}")
+        .VALUES("TYPE", "#{type}")
+        .VALUES("CREATED_BY", " #{createdBy}")
+        .toString();
+  }
 }

@@ -2,7 +2,7 @@ package me.zeph.spring.mybatis.springmybatisexample.mapper;
 
 import me.zeph.spring.mybatis.springmybatisexample.model.MyCouponTicket;
 import me.zeph.spring.mybatis.springmybatisexample.provider.MyCouponTicketProvider;
-import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.InsertProvider;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -17,7 +17,7 @@ public interface MyCouponTicketMapper {
   @Select("SELECT * FROM MY_COUPON_TICKET WHERE ID = #{id}")
   MyCouponTicket findById(@Param("id") long id);
 
-  @Insert("INSERT INTO MY_COUPON_TICKET(CODE, TYPE, CREATED_BY, CREATED_TIME) VALUES(#{code}, #{type}, #{createdBy}, #{createdTime})")
+  @InsertProvider(type = MyCouponTicketProvider.class, method = "insert")
   long insert(MyCouponTicket myCouponTicket);
 
 }
