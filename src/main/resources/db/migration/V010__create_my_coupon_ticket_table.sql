@@ -1,16 +1,16 @@
-create table my_coupon_ticket
+CREATE TABLE MY_COUPON_TICKET
 (
-    id           serial     not null,
-    code         varchar(8) not null,
-    type         serial     not null,
-    created_by   serial     not null,
-    created_time timestamp  not null
+    ID           SERIAL     NOT NULL,
+    CODE         VARCHAR(8) NOT NULL,
+    TYPE         SERIAL     NOT NULL,
+    CREATED_BY   SERIAL     NOT NULL,
+    CREATED_TIME TIMESTAMP  NOT NULL
 );
 
-create unique index my_coupon_ticket_code_uindex on my_coupon_ticket (code);
+CREATE UNIQUE INDEX MY_COUPON_TICKET_CODE_UINDEX ON MY_COUPON_TICKET (CODE);
 
-create unique index my_coupon_ticket_id_uindex on my_coupon_ticket (id);
+CREATE UNIQUE INDEX MY_COUPON_TICKET_ID_UINDEX ON MY_COUPON_TICKET (ID);
 
-alter table my_coupon_ticket
-    add constraint my_coupon_ticket_pk primary key (id);
+ALTER TABLE MY_COUPON_TICKET
+    ADD CONSTRAINT MY_COUPON_TICKET_PK PRIMARY KEY (ID);
 
