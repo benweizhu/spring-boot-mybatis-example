@@ -16,6 +16,6 @@ public class MyCouponTicket {
   private long id;
   private String code;
   private int type;
-  private int createdBy;
+  private String createdBy;
   private LocalDateTime createdTime;
 }

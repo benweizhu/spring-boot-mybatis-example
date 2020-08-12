@@ -24,4 +24,11 @@ public class MyCouponTicketSqlProvider {
         .toString();
   }
 
+  public String findAll(){
+    return new SQL()
+        .SELECT("*")
+        .FROM("MY_COUPON_TICKET")
+        .toString();
+  }
+
 }
