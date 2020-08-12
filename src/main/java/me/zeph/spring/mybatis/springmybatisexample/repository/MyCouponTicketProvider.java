@@ -1,4 +1,4 @@
-package me.zeph.spring.mybatis.springmybatisexample.provider;
+package me.zeph.spring.mybatis.springmybatisexample.repository;
 
 import org.apache.ibatis.jdbc.SQL;
 
