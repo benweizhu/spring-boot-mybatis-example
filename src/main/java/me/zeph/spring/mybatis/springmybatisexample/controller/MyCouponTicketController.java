@@ -7,7 +7,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.time.LocalDateTime;
 
 @RestController
 public class MyCouponTicketController {
@@ -18,6 +22,14 @@ public class MyCouponTicketController {
   @GetMapping(value = "/tickets/{code}")
   public ResponseEntity<MyCouponTicket> findTicketByCode(@PathVariable String code) {
     return new ResponseEntity<>(myCouponTicketMapper.findByCode(code), HttpStatus.OK);
+  }
+
+  @PostMapping(value = "/tickets")
+  public ResponseEntity<MyCouponTicket> saveTicket(@RequestBody MyCouponTicket myCouponTicket){
+    myCouponTicket.setCreatedBy(0);
+    myCouponTicket.setCreatedTime(LocalDateTime.now());
+    MyCouponTicket savedMyCouponTicket = myCouponTicketMapper.findById(myCouponTicketMapper.insert(myCouponTicket));
+    return new ResponseEntity<>(savedMyCouponTicket, HttpStatus.OK);
   }
 
 }

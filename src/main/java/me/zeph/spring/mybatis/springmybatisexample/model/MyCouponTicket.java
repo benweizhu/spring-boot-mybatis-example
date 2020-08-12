@@ -1,10 +1,14 @@
 package me.zeph.spring.mybatis.springmybatisexample.model;
 
+import java.time.LocalDateTime;
+
 public class MyCouponTicket {
 
   private long id;
   private String code;
   private int type;
+  private int createdBy;
+  private LocalDateTime createdTime;
 
   public MyCouponTicket() {
   }
@@ -37,5 +41,21 @@ public class MyCouponTicket {
 
   public void setType(int type) {
     this.type = type;
+  }
+
+  public int getCreatedBy() {
+    return createdBy;
+  }
+
+  public void setCreatedBy(int createdBy) {
+    this.createdBy = createdBy;
+  }
+
+  public LocalDateTime getCreatedTime() {
+    return createdTime;
+  }
+
+  public void setCreatedTime(LocalDateTime createdTime) {
+    this.createdTime = createdTime;
   }
 }
