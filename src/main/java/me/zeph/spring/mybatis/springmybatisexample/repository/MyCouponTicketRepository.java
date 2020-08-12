@@ -16,7 +16,7 @@ public interface MyCouponTicketRepository {
   @Select("SELECT * FROM MY_COUPON_TICKET WHERE ID = #{id}")
   MyCouponTicket findById(@Param("id") long id);
 
-  @InsertProvider(type = MyCouponTicketProvider.class, method = "insert")
-  long insert(MyCouponTicket myCouponTicket);
+  @InsertProvider(type = MyCouponTicketProvider.class, method = "save")
+  long save(MyCouponTicket myCouponTicket);
 
 }
