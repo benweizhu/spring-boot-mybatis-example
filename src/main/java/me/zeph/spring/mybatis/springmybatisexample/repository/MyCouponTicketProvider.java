@@ -20,4 +20,5 @@ public class MyCouponTicketProvider {
         .VALUES("CREATED_BY", " #{createdBy}")
         .toString();
   }
+
 }
