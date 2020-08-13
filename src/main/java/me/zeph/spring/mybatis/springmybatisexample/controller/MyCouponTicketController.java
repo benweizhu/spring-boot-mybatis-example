@@ -29,7 +29,8 @@ public class MyCouponTicketController {
   }
 
   @GetMapping(value = "/tickets")
-  public ResponseEntity<PageResponnse> getTicketsByPage(@RequestParam(name = "page") int page, @RequestParam(name = "page_size") int pageSize) {
+  public ResponseEntity<PageResponnse> getTicketsByPage(@RequestParam(name = "page") int page,
+                                                        @RequestParam(name = "page_size") int pageSize) {
     PageRequest pageRequest = PageRequest.builder().page(page).pageSize(pageSize).build();
     PageRowBounds rowBounds = new PageRowBounds(pageRequest.getOffset(), pageRequest.getLimit());
     List<MyCouponTicket> tickets = myCouponTicketRepository.findAll(rowBounds);
