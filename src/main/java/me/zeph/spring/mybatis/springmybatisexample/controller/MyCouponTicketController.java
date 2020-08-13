@@ -50,19 +50,22 @@ public class MyCouponTicketController {
 
   @PostMapping(value = "/tickets")
   public ResponseEntity<MyCouponTicket> saveTicket(@RequestBody MyCouponTicket myCouponTicket) {
-    MyCouponTicket savedMyCouponTicket = myCouponTicketRepository.findById(myCouponTicketRepository.save(myCouponTicket));
-    return new ResponseEntity<>(savedMyCouponTicket, HttpStatus.CREATED);
+    Optional<MyCouponTicket> myCouponTicketOptional = myCouponTicketRepository.findById(myCouponTicketRepository.save(myCouponTicket));
+    return new ResponseEntity<>(myCouponTicketOptional.get(), HttpStatus.CREATED);
   }
 
   @PutMapping(value = "/tickets/{id}")
   public ResponseEntity<MyCouponTicket> patchTicket(@PathVariable long id,
                                                     @RequestBody MyCouponTicketUpdateRequest myCouponTicketUpdateRequest) {
-    MyCouponTicket myCouponTicket = myCouponTicketRepository.findById(id);
-    myCouponTicket.setCode(myCouponTicketUpdateRequest.getCode());
-    myCouponTicket.setType(myCouponTicketUpdateRequest.getType());
-    myCouponTicketRepository.update(myCouponTicket);
-    MyCouponTicket updatedMyCouponTicket = myCouponTicketRepository.findById(id);
-    return new ResponseEntity<>(updatedMyCouponTicket, HttpStatus.OK);
+    Optional<MyCouponTicket> myCouponTicketOptional = myCouponTicketRepository.findById(id);
+    if (myCouponTicketOptional.isPresent()) {
+      MyCouponTicket myCouponTicket = myCouponTicketOptional.get();
+      myCouponTicket.setCode(myCouponTicketUpdateRequest.getCode());
+      myCouponTicket.setType(myCouponTicketUpdateRequest.getType());
+      myCouponTicketRepository.update(myCouponTicket);
+      return new ResponseEntity<>(myCouponTicketRepository.findById(id).get(), HttpStatus.OK);
+    }
+    throw new ResponseStatusException(NOT_FOUND);
   }
 
 }
