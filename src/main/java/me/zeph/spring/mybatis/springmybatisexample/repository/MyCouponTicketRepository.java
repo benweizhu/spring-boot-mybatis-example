@@ -10,12 +10,13 @@ import org.apache.ibatis.annotations.UpdateProvider;
 import org.apache.ibatis.session.RowBounds;
 
 import java.util.List;
+import java.util.Optional;
 
 @Mapper
 public interface MyCouponTicketRepository {
 
   @SelectProvider(type = MyCouponTicketSqlProvider.class, method = "findByCode")
-  MyCouponTicket findByCode(@Param("code") String code);
+  Optional<MyCouponTicket> findByCode(@Param("code") String code);
 
   @Select("SELECT * FROM MY_COUPON_TICKET WHERE ID = #{id}")
   MyCouponTicket findById(@Param("id") long id);

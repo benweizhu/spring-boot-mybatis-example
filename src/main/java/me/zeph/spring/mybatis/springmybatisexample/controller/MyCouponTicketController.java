@@ -16,8 +16,12 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
+import java.util.Optional;
+
+import static org.springframework.http.HttpStatus.NOT_FOUND;
 
 @RestController
 @AllArgsConstructor
@@ -27,7 +31,11 @@ public class MyCouponTicketController {
 
   @GetMapping(value = "/tickets/{code}")
   public ResponseEntity<MyCouponTicket> findTicketByCode(@PathVariable String code) {
-    return new ResponseEntity<>(myCouponTicketRepository.findByCode(code), HttpStatus.OK);
+    Optional<MyCouponTicket> myCouponTicketOptional = myCouponTicketRepository.findByCode(code);
+    if (myCouponTicketOptional.isPresent()) {
+      return new ResponseEntity<>(myCouponTicketOptional.get(), HttpStatus.OK);
+    }
+    throw new ResponseStatusException(NOT_FOUND);
   }
 
   @GetMapping(value = "/tickets")
