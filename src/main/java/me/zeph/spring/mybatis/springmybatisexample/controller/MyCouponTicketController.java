@@ -23,7 +23,7 @@ public class MyCouponTicketController {
 
   private final MyCouponTicketRepository myCouponTicketRepository;
 
-  @GetMapping(value = "/tickets/code/{code}")
+  @GetMapping(value = "/tickets/{code}")
   public ResponseEntity<MyCouponTicket> findTicketByCode(@PathVariable String code) {
     return new ResponseEntity<>(myCouponTicketRepository.findByCode(code), HttpStatus.OK);
   }

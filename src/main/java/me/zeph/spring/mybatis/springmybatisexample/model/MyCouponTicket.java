@@ -13,9 +13,10 @@ import java.time.LocalDateTime;
 @Setter
 public class MyCouponTicket {
 
-  private long id;
   private String code;
   private int type;
   private String createdBy;
   private LocalDateTime createdTime;
+  private String name;
+  private String description;
 }
