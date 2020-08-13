@@ -5,19 +5,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
-
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-public class MyCouponTicket {
-
-  private long id;
+public class MyCouponTicketUpdateRequest {
   private String code;
   private int type;
-  private String createdBy;
-  private LocalDateTime createdTime;
-  private String name;
-  private String description;
 }

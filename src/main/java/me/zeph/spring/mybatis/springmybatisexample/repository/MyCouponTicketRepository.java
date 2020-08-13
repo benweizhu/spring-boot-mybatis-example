@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.SelectProvider;
+import org.apache.ibatis.annotations.UpdateProvider;
 import org.apache.ibatis.session.RowBounds;
 
 import java.util.List;
@@ -24,4 +25,7 @@ public interface MyCouponTicketRepository {
 
   @SelectProvider(type = MyCouponTicketSqlProvider.class, method = "findAll")
   List<MyCouponTicket> findAll(RowBounds rowBounds);
+
+  @UpdateProvider(type = MyCouponTicketSqlProvider.class, method = "update")
+  int update(MyCouponTicket myCouponTicket);
 }

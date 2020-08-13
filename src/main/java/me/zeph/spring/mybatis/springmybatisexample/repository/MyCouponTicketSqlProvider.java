@@ -35,4 +35,13 @@ public class MyCouponTicketSqlProvider {
         .toString();
   }
 
+  public String update(){
+    return new SQL()
+        .UPDATE("MY_COUPON_TICKET")
+        .SET("CODE = #{code}")
+        .SET("TYPE = #{type}")
+        .WHERE("ID = #{id}")
+        .toString();
+  }
+
 }
